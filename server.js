@@ -1,5 +1,5 @@
 // Setup empty JS object to act as endpoint for all routes
-projectData = [];
+projectData = {};
 
 // addData();
 const fetch = require("node-fetch");
@@ -33,10 +33,18 @@ function listening() {
 //get requests
 app.get('/all', function(req, res) {
     res.send(projectData)
+    console.log(projectData)
 })
 
 // post request
 app.post('/add', function(req, res) {
+    if (req.body) {
+        projectData = req.body
+        console.log(projectData)
+
+    }
+    res.send({status: 'ok'});
+
     newEntry = {
         temperature: req.body.temp,
         date: req.body.date,
@@ -47,10 +55,10 @@ app.post('/add', function(req, res) {
     console.log(projectData)
 })
 
-// const data = {};
-// app.post('/add', function(req, res) {
-//     console.log(req.body)
-//     data.push(req.body);
-// }
+const data = {};
+app.post('/add', function(req, res) {
+    console.log(req.body)
+    data.push(req.body);
+})
 
 
