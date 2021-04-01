@@ -1,20 +1,29 @@
 /* Global Variables */
 //API credentials
 
+const baseURL = 'http://api.openweathermap.org/data/2.5/weather?zip=';
+const apiKey = '';
 
+const async = require('async');
 
-let baseURL = 'http://api.openweathermap.org/data/2.5/weather?zip=';
-let apiKey = '&appid=74630a06589374cbf88419b9a6e12b2f';
-// const fetch = require('node-fetch');
-
-// const newCode = document.getElementById('zip').value;
-document.getElementById('generate').addEventListener('click', performAction);
+const newCode = document.getElementById('zip').value;
+const feelings = document.getElementById('feelings').value;
 
 function performAction(e) {
-    const newCode = document.getElementById('zip').value;
+    document.getElementById('generate').addEventListener('click', performAction);
+    // const newCode = document.getElementById('zip').value;
+    // const feelings = document.getElementById('feelings').value;
     const data = getCode(baseURL, newCode, apiKey)
+    if (newCode == "") {
+        alert("ZIP Code must be filled in")
+        return false
+    } else {
     postData(baseURL, newCode, apiKey, data)
+    getCode(baseURL, newCode, apiKey).then( (data) => postData("/add", feelings, data))
+    }
 }
+
+
 
 const getCode = async (baseURL, code, key)=> {
     const res = await fetch(baseURL + code + key)
@@ -32,14 +41,14 @@ const getCode = async (baseURL, code, key)=> {
 let d = new Date();
 let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
 
-const postData = async (URL, {main, data, content}) => {
-    const postData = {
-        temp: temp,
-        date: date,
-        content: content,
+const postData = async (URL, feelings, data => {
+    const newData = {
+        temp: data.main.temp,
+        date: newDate,
+        content: feelings,
     }
-   
-}
+})
+
 const settings = async (URL='',  data={}) => {
     
     const res = await fetch(URL, {
@@ -49,9 +58,11 @@ const settings = async (URL='',  data={}) => {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(data),
+        
     })
     
     try {
+        settings(URL, postData)
         // const fetchResponse = await fetch(baseURL + code + key + settings)
         const newData = await res.json();
         // postData('/add', data)
@@ -62,7 +73,7 @@ const settings = async (URL='',  data={}) => {
     } catch (error) {
         console.log("error", error);
     }
-    updateUI()
+    return updateUI()
 }
 
 /* Update UI*/
@@ -74,9 +85,9 @@ const updateUI = async () => {
         // document.getElementById('date').innerHTML = `Date: ${allData.date}`;
         // document.getElementById('temp').innerHTML = `Temperature: ${allData.temp}`;
         // document.getElementById('content').innerHTML = `I feel: ${allData.content}`;
-    document.getElementById('date').innerHTML = allData[0].date;
-    document.getElementById('temp').innerHTML = allData[0].temp;
-    document.getElementById('content').innerHTML = allData[0].content;
+    document.getElementById('date').innerHTML = allData.date;
+    document.getElementById('temp').innerHTML = allData.temp;
+    document.getElementById('content').innerHTML = allData.content;
     
     }catch(error){
         console.log("error", error)
