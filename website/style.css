@@ -13,7 +13,7 @@ body{
     height: 600px;
     width: 340px;
     background: whitesmoke;
-    color: #f0d43a;
+    color: black;
     border: none;
     box-shadow: 2px 4px 6px #444;
     justify-content: center;
@@ -63,7 +63,7 @@ body{
 /*  Basic Styling To Override Default For Basic HTML Elements */
 label{
     display:block;
-    font-size: 27px;
+    font-size: 24px;
 }
 
 input{
@@ -72,7 +72,7 @@ input{
     width: auto;
     background: grey;
     color: white;
-    font-size: 20px;
+    font-size: 18px;
     font-family: 'Oswald', sans-serif;
     border: none;
 }
@@ -81,8 +81,8 @@ button{
     width: 150px;
     height: 30px;
     background: grey;
-    color: #f0d43a;
-    font-size: 20px;
+    color: black;
+    font-size: 18px;
     font-family: 'Oswald', sans-serif;
     border: none;
     box-shadow: 2px 4px 5px #444;
@@ -91,13 +91,13 @@ button:hover {
     background: #f0d43a;
 }
 h1{
-    font-size: 36px;
+    font-size: 18px;
 }
 
 textarea{
     background: grey;
     color: white;
-    font-size: 20px;
+    font-size: 18px;
     font-family: 'Oswald', sans-serif;
 }
 /* Reset style for HTML element on active to have no border*/
