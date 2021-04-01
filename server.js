@@ -45,20 +45,20 @@ app.post('/add', function(req, res) {
     }
     res.send({status: 'ok'});
 
-    newEntry = {
-        temperature: req.body.temp,
-        date: req.body.date,
-        response: req.body.resp
-    }
+    // newEntry = {
+    //     temperature: req.body.temp,
+    //     date: req.body.date,
+    //     response: req.body.resp
+    // }
     projectData.push(newEntry)
     res.send(projectData)
     console.log(projectData)
 })
 
-const data = {};
-app.post('/add', function(req, res) {
-    console.log(req.body)
-    data.push(req.body);
-})
+// const data = {};
+// app.post('/add', function(req, res) {
+//     console.log(req.body)
+//     data.push(req.body);
+// })
 
 
