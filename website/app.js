@@ -4,7 +4,7 @@
 const async = require('async');
 
 let baseURL = 'http://api.openweathermap.org/data/2.5/weather?zip=';
-let apiKey = '&appid=74630a06589374cbf88419b9a6e12b2f&units=metric';
+let apiKey = '&appid=&units=metric';
 // const fetch = require('node-fetch');
 // const newCode = document.getElementById('zip').value;
 document.getElementById('generate').addEventListener('click', performAction);
