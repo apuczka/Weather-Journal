@@ -1,9 +1,6 @@
 /* Global Variables */
 //API credentials
 
-const baseURL = 'http://api.openweathermap.org/data/2.5/weather?zip=';
-const apiKey = '';
-
 const async = require('async');
 
 let baseURL = 'http://api.openweathermap.org/data/2.5/weather?zip=';
